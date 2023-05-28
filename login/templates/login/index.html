@@ -31,7 +31,8 @@
 					<img src="{% static 'login/images/img-01.png'%}" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form action="." method="post" class="login100-form validate-form">
+					{% csrf_token %}
 					<span class="login100-form-title">
 						Member Login
 					</span>
