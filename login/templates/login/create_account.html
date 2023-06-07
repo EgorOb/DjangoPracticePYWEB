@@ -14,7 +14,11 @@
 							<i class="fa fa-user-o" aria-hidden="true"></i>
 						</span>
 					</div>
-
+					{% if errors.username%}
+					<span class="txt1">
+					  {{errors.username}}
+					</span>
+					{% endif %}
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                         <input class="input100" type="text" name="email" placeholder="Email">
                         <span class="focus-input100"></span>
@@ -22,7 +26,11 @@
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
                     </div>
-
+					{% if errors.email%}
+					<span class="txt1">
+					  {{errors.email}}
+					</span>
+					{% endif %}
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<input class="input100" type="password" name="password1" placeholder="Password">
 						<span class="focus-input100"></span>
@@ -30,7 +38,11 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-
+					{% if errors.password1%}
+					<span class="txt1">
+					  {{errors.password1}}
+					</span>
+					{% endif %}
                     <div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<input class="input100" type="password" name="password2" placeholder="Repeat password">
 						<span class="focus-input100"></span>
@@ -38,7 +50,11 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-					
+					{% if errors.password2%}
+					<span class="txt1">
+					  {{errors.password2}}
+					</span>
+					{% endif %}
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Create
