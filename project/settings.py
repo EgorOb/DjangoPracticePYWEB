@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'other',
     'login',
     'store',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
