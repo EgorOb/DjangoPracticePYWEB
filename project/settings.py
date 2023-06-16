@@ -83,14 +83,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('NAME_PGDB'),
-        'USER': os.getenv('USER_PGDB'),
-        'PASSWORD': os.getenv('PASSWORD_PGDB'),
-        'HOST': os.getenv('HOST_PGDB'),
-        'PORT': os.getenv('PORT_PGDB'),
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.getenv('NAME_PGDB'),
+    #     'USER': os.getenv('USER_PGDB'),
+    #     'PASSWORD': os.getenv('PASSWORD_PGDB'),
+    #     'HOST': os.getenv('HOST_PGDB'),
+    #     'PORT': os.getenv('PORT_PGDB'),
+    # }
 
 }
 
@@ -110,6 +110,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'store.backends.CustomAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 # Internationalization
