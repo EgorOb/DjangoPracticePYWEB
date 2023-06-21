@@ -3,21 +3,18 @@ from django.test import TestCase
 from rest_framework.test import APIRequestFactory, APITestCase
 from rest_framework import status
 
-
 from .models import Cart, Product, Category
 from .serializers import CartSerializer
 from .views import CartViewSet
 
 
 class CartViewSetTestCase(TestCase):
+    fixtures = ['testdata.json']
+
     def setUp(self):
         self.factory = APIRequestFactory()
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        category = Category.objects.create(name="Vegetables")
-        self.product = Product.objects.create(name='Test Product', description='Test Description',
-                                              price=10.0, category=category)
-
-    # fixtures = ['testdata.json']
+        self.user = User.objects.first()
+        self.product = Product.objects.first()
 
     def test_create_cart_item(self):
         request = self.factory.post('/carts/', {'product': self.product.id})
@@ -54,11 +51,11 @@ class CartViewSetTestCase(TestCase):
 
 
 class CartSerializerTestCase(TestCase):
+    fixtures = ['testdata.json']
+
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        category = Category.objects.create(name="Vegetables")
-        self.product = Product.objects.create(name='Test Product', description='Test Description',
-                                              price=10.0, category=category)
+        self.user = User.objects.first()
+        self.product = Product.objects.first()
         self.cart_item = Cart.objects.create(user=self.user, product=self.product)
 
     def test_cart_serializer(self):
