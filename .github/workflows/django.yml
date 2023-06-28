@@ -38,9 +38,10 @@ jobs:
       run: |
         python manage.py test
     - name: Merge pull request
-      uses: repo-sync/github-sync@master
-      if: ${{ success() }}
+      uses: repo-sync/github-sync@v2
       with:
-        source_branch: ${{ github.head_ref }}
-        target_branch: master
+        source_repo: EgorOb/DjangoPracticePYWEB  # Замените на своё значение
+        source_branch: ${{ github.ref }}
+        destination_branch: master
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        sync_tags: true
