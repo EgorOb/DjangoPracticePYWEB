@@ -10,9 +10,9 @@ jobs:
     steps:
     - name: Use multiple secrets
       run: |
-        echo ${{ secrets.ALLOWED_HOSTS }}
-        echo ${{ secrets.DEBUG }}
-        echo ${{ secrets.SECRET_KEY }}
+        echo "${{ secrets.ALLOWED_HOSTS }}"
+        echo "${{ secrets.DEBUG }}"
+        echo "${{ secrets.SECRET_KEY }}"
     - name: Checkout to container
       uses: actions/checkout@v3
     - name: Set up Python 3.10
