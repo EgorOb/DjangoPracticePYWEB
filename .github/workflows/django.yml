@@ -6,13 +6,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+    env:
+      ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+      DEBUG: ${{ secrets.DEBUG }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
     steps:
-    - name: Use multiple secrets
-      run: |
-        echo "${{ secrets.ALLOWED_HOSTS }}"
-        echo "${{ secrets.DEBUG }}"
-        echo "${{ secrets.SECRET_KEY }}"
     - name: Checkout to container
       uses: actions/checkout@v3
     - name: Set up Python 3.10
