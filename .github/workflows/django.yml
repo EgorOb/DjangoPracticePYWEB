@@ -49,7 +49,7 @@ jobs:
         uses: "pascalgn/automerge-action@v0.15.6"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      - name: feedback
-        if: 'steps.automerge.outputs.mergeResult == merged'
-        run: |
-          echo "Pull request ${{ steps.automerge.outputs.pullRequestNumber }} merged!"
+#       - name: feedback
+#         if: 'steps.automerge.outputs.mergeResult == merged'
+#         run: |
+#           echo "Pull request ${{ steps.automerge.outputs.pullRequestNumber }} merged!"
