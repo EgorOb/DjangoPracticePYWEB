@@ -45,11 +45,17 @@ jobs:
 # #         destination_branch: master
 # #         github_token: ${{ secrets.GITHUB_TOKEN }}
 # #         sync_tags: true
-      - id: automerge
-        name: automerge
-        uses: "pascalgn/automerge-action@v0.15.6"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+#       - id: automerge
+#         name: automerge
+#         uses: "pascalgn/automerge-action@v0.15.6"
+#         env:
+#           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    - name: Merge pull request
+      uses: sudo-bot/action-pull-request-merge@v1.2.0
+      with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.pull_request.number }}
+#           allowed-usernames-regex: ^EgorOb$
 #       - name: feedback
 #         if: steps.automerge.outputs.mergeResult == "merged"
 #         run: |
