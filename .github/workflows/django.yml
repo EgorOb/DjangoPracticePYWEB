@@ -37,11 +37,18 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
-    - name: Merge pull request
-      uses: repo-sync/github-sync@master
+    #     - name: Merge pull request
+#       uses: repo-sync/github-sync@master
+#       with:
+#         source_repo: EgorOb/DjangoPracticePYWEB  # Замените на своё значение
+#         source_branch: ${{ github.ref }}
+#         destination_branch: master
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         sync_tags: true
+    - name: Merge Pull Request
+      uses: juliangruber/merge-pull-request-action@v1
       with:
-        source_repo: EgorOb/DjangoPracticePYWEB  # Замените на своё значение
-        source_branch: ${{ github.ref }}
-        destination_branch: master
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        sync_tags: true
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        number: 1
+        method: squash # merge rebase
+        repo: EgorOb/DjangoPracticePYWEB
