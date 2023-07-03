@@ -37,24 +37,25 @@ jobs:
 #     - name: Run Tests
 #       run: |
 #         python manage.py test
-    - name: Merge pull request
-      uses: repo-sync/github-sync@master
-      with:
-        source_repo: EgorOb/DjangoPracticePYWEB  # Замените на своё значение
-        source_branch: ${{ github.ref }}
-        destination_branch: master
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        sync_tags: true
+#     - name: Merge pull request
+#       uses: repo-sync/github-sync@master
+#       with:
+#         source_repo: EgorOb/DjangoPracticePYWEB  # Замените на своё значение
+#         source_branch: ${{ github.ref }}
+#         destination_branch: master
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         sync_tags: true
 #       - id: automerge
 #         name: automerge
 #         uses: "pascalgn/automerge-action@v0.15.6"
 #         env:
 #           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-#     - name: Merge pull request
-#       uses: sudo-bot/action-pull-request-merge@v1.2.0
-#       with:
-#           github-token: ${{ secrets.GITHUB_TOKEN }}
-#           number: ${{ github.event.pull_request.number }}
+    - name: Merge pull request
+      uses: sudo-bot/action-pull-request-merge@v1.2.0
+      if: ${{ success() }}
+      with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.pull_request.number }}
 #           allowed-usernames-regex: ^EgorOb$
 #       - name: feedback
 #         if: steps.automerge.outputs.mergeResult == "merged"
