@@ -5,6 +5,8 @@ on:
 #   push:
 #     branches: [ "master" ]
   pull_request: # Запускать будем только при пулл реквесте в master
+    types:
+      - unlabeled
     branches: [ "master" ]
 
 jobs:
