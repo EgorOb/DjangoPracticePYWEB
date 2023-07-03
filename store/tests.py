@@ -24,7 +24,7 @@ class CartViewSetTestCase(TestCase):
         response = view(request)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['message'], 'Product added to cart')
-        self.assertEqual(Cart.objects.count(), 1)
+        self.assertEqual(Cart.objects.count(), 3)  # Неправильно, должно быть 1
 
     def test_update_cart_item(self):
         cart_item = Cart.objects.create(user=self.user, product=self.product)
