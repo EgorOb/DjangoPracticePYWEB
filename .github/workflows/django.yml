@@ -37,7 +37,7 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
-    #     - name: Merge pull request
+#     - name: Merge pull request
 #       uses: repo-sync/github-sync@master
 #       with:
 #         source_repo: EgorOb/DjangoPracticePYWEB  # Замените на своё значение
