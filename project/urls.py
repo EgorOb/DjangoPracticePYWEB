@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from store.urls import router as cart_router
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
@@ -26,3 +27,4 @@ urlpatterns = [
     path('', include('store.urls')),
     path('api/', include(cart_router.urls)),
 ]
+urlpatterns += staticfiles_urlpatterns()
