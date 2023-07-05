@@ -138,7 +138,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 if 'localhost' in ALLOWED_HOSTS:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-    print('STATICFILES_DIRS ', STATICFILES_DIRS)
+    # print('STATICFILES_DIRS ', STATICFILES_DIRS)
+    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 else:
     # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
