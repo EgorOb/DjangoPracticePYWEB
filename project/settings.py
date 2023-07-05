@@ -138,14 +138,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 if 'localhost' in ALLOWED_HOSTS:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-    # print('STATICFILES_DIRS ', STATICFILES_DIRS)
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 else:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    print('STATIC_ROOT ', STATIC_ROOT)
+    if not DEBUG:  # Настройка для production
+        STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+        STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+        STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    else:
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
