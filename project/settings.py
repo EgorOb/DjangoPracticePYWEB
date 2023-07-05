@@ -142,7 +142,7 @@ if 'localhost' in ALLOWED_HOSTS:
     # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 else:
-    # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     print('STATIC_ROOT ', STATIC_ROOT)
