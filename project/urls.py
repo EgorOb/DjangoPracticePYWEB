@@ -27,4 +27,4 @@ urlpatterns = [
     path('', include('store.urls')),
     path('api/', include(cart_router.urls)),
 ]
-urlpatterns += staticfiles_urlpatterns()
+# urlpatterns += staticfiles_urlpatterns()
