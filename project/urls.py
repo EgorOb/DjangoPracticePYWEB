@@ -22,6 +22,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')),
+    path('', include('django_prometheus.urls')),
     path('admin/', admin.site.urls),
     path('other/', include('other.urls')),
     path('login/', include('login.urls')),

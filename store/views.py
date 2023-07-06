@@ -8,6 +8,12 @@ from rest_framework.permissions import IsAuthenticated
 from .serializers import CartSerializer
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
+from django.views.decorators.cache import cache_page
+from time import sleep
+from prometheus_client import Summary
+
+# Создание счетчика продолжительности выполнения запросов
+my_request_duration = Summary('my_request_duration', 'Description of my request duration')
 
 
 class CartViewSet(viewsets.ModelViewSet):
@@ -62,6 +68,8 @@ class CartViewSet(viewsets.ModelViewSet):
 
 class ShopView(View):
 
+    # @cache_page(30)  # Кэширование страницы на час
+    @my_request_duration.time()
     def get(self, request):
         # Создание запроса на получения всех действующих не нулевых скидок
         discount_value = Case(When(discount__value__gte=0,
@@ -89,6 +97,7 @@ class ShopView(View):
             price_after=price_with_discount
         ).values('id', 'name', 'image', 'price_before', 'price_after',
                  'discount_value')
+        # sleep(1)
         return render(request, 'store/shop.html', {"data": products})
 
 
