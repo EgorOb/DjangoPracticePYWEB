@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     },
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django_prometheus.db.backends.postgresql',  # 'django.db.backends.postgresql'
         'NAME': os.getenv('NAME_PGDB'),
         'USER': os.getenv('USER_PGDB'),
         'PASSWORD': os.getenv('PASSWORD_PGDB'),
@@ -103,7 +103,8 @@ DATABASES = {
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'BACKEND': 'django_prometheus.cache.backends.redis.RedisCache',
+        # 'BACKEND': 'django.core.cache.backends.redis.RedisCache',
         'LOCATION': os.getenv('REDIS_URL'),
     }
 }

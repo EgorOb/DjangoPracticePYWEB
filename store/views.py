@@ -13,7 +13,7 @@ from time import sleep
 from prometheus_client import Summary
 
 # Создание счетчика продолжительности выполнения запросов
-my_request_duration = Summary('my_request_duration', 'Description of my request duration')
+my_request_duration = Summary('django_request_duration_seconds', 'Description of my request duration')
 
 
 class CartViewSet(viewsets.ModelViewSet):
