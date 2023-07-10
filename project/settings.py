@@ -104,7 +104,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django_prometheus.cache.backends.redis.RedisCache',
-        # 'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        # 'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': os.getenv('REDIS_URL'),
     }
 }
